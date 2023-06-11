@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, Button, Alert } from "react-native";
+import { StyleSheet, Text, View, Button, Alert , TouchableHighlight} from "react-native";
 
 //
 import { useNavigation } from "@react-navigation/native";
@@ -27,9 +27,16 @@ export default function Game() {
 
   return (
     <View style={styles.container}>
-      <Text>Starting : {baseNumber}</Text>
-      <Button onPress={() => setchoice("higher")} title="Higher" />
-      <Button onPress={() => setchoice("lower")} title="Lower" />
+      <Text style={styles.baseNumber}>Starting : {baseNumber}</Text>
+
+       <TouchableHighlight onPress={() => setchoice("higher")} style={[styles.button, styles.buttonGreen]}>
+            <Text style={styles.buttonText}>Higher</Text>
+       </TouchableHighlight>
+
+       <TouchableHighlight onPress={() => setchoice("lower")} style={[styles.button, styles.buttonRed]}>
+            <Text style={styles.buttonText} >Lower</Text>
+       </TouchableHighlight>
+
     </View>
   );
 }
@@ -41,4 +48,29 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  baseNumber : {
+    fontSize : 42,
+    marginBottom: 30,
+  },
+  button : {
+    display : 'flex',
+    alignItems : 'center',
+    justifyContent : 'space-around',
+    borderRadius : 15,
+    padding : 20,
+    marginVertical : 15,
+  },
+  buttonText : {
+    color : 'white',
+    fontSize : 24,
+  },
+  buttonGreen : {
+    backgroundColor : 'green',
+  },
+  buttonRed : {
+    backgroundColor : 'red', 
+  }
+
+
+
 });
